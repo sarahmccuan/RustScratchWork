@@ -1,11 +1,7 @@
 fn main() {
-    let mut number: i32 = 3;
-
-    while number != 0 {
-        println!("{}!", number);
-
-        number -= 1;
+    let a = [10, 20, 30, 40, 50]; // how to explicitly define types?
+    
+    for element in a.iter() {
+        println!("The value is {}", element);
     }
-
-    println!("LIFTOFF!!!");
 }
