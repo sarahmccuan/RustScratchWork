@@ -6,4 +6,15 @@ fn main() {
     } else {
         println!("condition was false");
     }
+
+    // using conditional in declaration
+    let condition: bool = true;
+
+    let second_number: i32 = if condition {
+        5
+    } else {
+       6 
+    };
+
+    println!("The value of number is {}", second_number);
 }
