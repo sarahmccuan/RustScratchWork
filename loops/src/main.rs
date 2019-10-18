@@ -1,13 +1,11 @@
 fn main() {
-    let mut counter: i32 = 0;
+    let mut number: i32 = 3;
 
-    let result: i32 = loop {
-        counter += 1;
+    while number != 0 {
+        println!("{}!", number);
 
-        if counter == 10 {
-            break counter * 2;
-        }
-    };
+        number -= 1;
+    }
 
-    println!("The result is {}", result);
+    println!("LIFTOFF!!!");
 }
