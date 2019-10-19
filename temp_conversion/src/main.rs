@@ -31,3 +31,9 @@ fn convert_fahr_to_celsius(fahrenheit: f64) -> f64 {
     celsius
 }
 
+#[test]
+fn test_convert_fahr_to_celsius() {
+    assert_eq!(convert_fahr_to_celsius(32.0), 0.0);
+    assert_eq!(convert_fahr_to_celsius(212.0), 100.0);
+}
+
