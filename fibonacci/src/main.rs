@@ -1,18 +1,30 @@
 // Calculates the nth Fibonacci number given n
+use std::io;
 
 fn main() {
     println!("hello, world");
     // Get "n" from user and validate until legit n given
+    loop {
+        println!("Enter a number \"n\" greater than 0");
+        let mut user_input = String::new();
+        io::stdin().read_line(&mut user_input)
+            .expect("Failed to read line");
+       
+        let n: i64 = match user_input.trim().parse::<i64>() {
+            Ok(num) => {
+                num;
+                break;
+            }
+            Err(_) => {
+                println!("Not a valid number for n!");
+                continue;
+            }
+        };
+    }
+
+    println!("value entered is {}", n);
     // calculate nth fibonacci number (break this out as func w/ test)
     // print to user and end program
-    println!("first number is {}", calculate_nth_fibonacci_number(1));
-    println!("second number is {}", calculate_nth_fibonacci_number(2));
-    println!("third number is {}", calculate_nth_fibonacci_number(3));
-    println!("fourth number is {}", calculate_nth_fibonacci_number(4));
-    println!("fifth number is {}", calculate_nth_fibonacci_number(5));
-    println!("sixth number is {}", calculate_nth_fibonacci_number(6));
-    println!("seventh number is {}", calculate_nth_fibonacci_number(7));
-    println!("eighth number is {}", calculate_nth_fibonacci_number(8));
 }
 
 
@@ -30,6 +42,16 @@ fn calculate_nth_fibonacci_number(n: i64) -> i64 {
         calculate_nth_fibonacci_number(n - 1) + calculate_nth_fibonacci_number(n-2)
     }
 }
+
+fn validate_user_input(input_string: &str) {
+
+}
+
+
+
+
+
+
 
 #[test]
 fn test_calculate_nth_fibonacci_number(){
@@ -49,3 +71,39 @@ fn test_calculate_nth_fibonacci_number(){
     assert_eq!(calculate_nth_fibonacci_number(-7), minus_seventh_fibonacci_number,
                "minus seventh fibonacci was not calculated correctly");
 }
+
+#[test]
+fn test_validate_user_input(){
+    // test falid inputs
+    let valid_input = "5\n"; // should be a positive integer as string w/ return
+    assert_eq!(validate_user_input(valid_input), valid_input); // should return cast input if valid 
+
+    // test invalid inputs
+    let invalid_input_response = -1; // should always return -1 for bad input
+    let invalid_negative_input = "-5\n";
+    assert_eq!(validate_user_input(invalid_negative_input), invalid_input_response);
+    let invalid_input_response = "hello\n";
+    assert_eq!(validate_user_input(invalid_negative_input), invalid_input_response);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
