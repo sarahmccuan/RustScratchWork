@@ -30,18 +30,6 @@ fn convert_fahr_to_celsius(fahrenheit: f64) -> f64 {
     let celsius = (5.0/9.0) * (fahrenheit - 32.0);
     celsius
 }
-// I want to break out the input handler from main
-// Doing so requires making sure I have valid input
-fn input_validation(user_input: &str) -> u8 {
-    if user_input.trim() == "exit" {
-        return 0; 
-    } else {
-        let user_input: f64 = match user_input.trim().parse() {
-            Ok(num) => return 0,
-            Err(_) => return 1,
-        };
-    }
-}
 
 #[test]
 fn test_convert_fahr_to_celsius() {
@@ -49,19 +37,6 @@ fn test_convert_fahr_to_celsius() {
     assert_eq!(convert_fahr_to_celsius(212.0), 100.0);
 }
 
-
-#[test]
-fn test_input_validation() { // put this in a nicer format pls
-    let user_input = "1\n";
-    assert_eq!(input_validation(user_input), 1);
-    let user_input = "exit\n";
-    assert_eq!(input_validation(user_input), 0);
-    let user_input = "1.1\n";
-    assert_eq!(input_validation(user_input), 0);
-    let user_input = "0\n";
-    assert_eq!(input_validation(user_input), 0);
-}
-  
 
 
 
