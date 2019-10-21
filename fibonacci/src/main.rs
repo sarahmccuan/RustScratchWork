@@ -35,13 +35,17 @@ fn calculate_nth_fibonacci_number(n: i64) -> i64 {
 fn test_calculate_nth_fibonacci_number(){
     // test valid inputs
     let first_fibonacci_number = 1;
-    assert_eq!(calculate_nth_fibonacci_number(1), first_fibonacci_number);
+    assert_eq!(calculate_nth_fibonacci_number(1), first_fibonacci_number, 
+               "first fibonacci number was not calculated correctly");
     let seventh_fibonacci_number = 13;
-    assert_eq!(calculate_nth_fibonacci_number(13), seventh_fibonacci_number);
+    assert_eq!(calculate_nth_fibonacci_number(7), seventh_fibonacci_number,
+                "seventh fibonacci number was not calculated correctly");
 
     // test invalid inputs. if n <= 0, return -1 
     let zeroth_fibonacci_number = -1; 
-    assert_eq!(calculate_nth_fibonacci_number(0), zeroth_fibonacci_number);
+    assert_eq!(calculate_nth_fibonacci_number(0), zeroth_fibonacci_number,
+               "zeroth fibonacci number was not calculated correctly");
     let minus_seventh_fibonacci_number = -1;
-    assert_eq!(calculate_nth_fibonacci_number(-7), minus_seventh_fibonacci_number);
+    assert_eq!(calculate_nth_fibonacci_number(-7), minus_seventh_fibonacci_number,
+               "minus seventh fibonacci was not calculated correctly");
 }
