@@ -10,19 +10,9 @@ fn main() {
         io::stdin().read_line(&mut user_input)
             .expect("Failed to read line");
        
-        let n: i64 = match user_input.trim().parse::<i64>() {
-            Ok(num) => {
-                num;
-                break;
-            }
-            Err(_) => {
-                println!("Not a valid number for n!");
-                continue;
-            }
-        };
     }
 
-    println!("value entered is {}", n);
+    // println!("value entered is {}", n);
     // calculate nth fibonacci number (break this out as func w/ test)
     // print to user and end program
 }
@@ -43,13 +33,13 @@ fn calculate_nth_fibonacci_number(n: i64) -> i64 {
     }
 }
 
-fn validate_user_input(input_string: &str) {
-
+fn validate_user_input(input_string: &str) -> i64 {
+    let return_val = match input_string.trim().parse::<i64>() {
+        Ok(num) => num,
+        Err(_) => -1,
+    };
+    return_val
 }
-
-
-
-
 
 
 
@@ -76,13 +66,14 @@ fn test_calculate_nth_fibonacci_number(){
 fn test_validate_user_input(){
     // test falid inputs
     let valid_input = "5\n"; // should be a positive integer as string w/ return
-    assert_eq!(validate_user_input(valid_input), valid_input); // should return cast input if valid 
+    let valid_input_response = 5;
+    assert_eq!(validate_user_input(valid_input), valid_input_response);
 
     // test invalid inputs
     let invalid_input_response = -1; // should always return -1 for bad input
     let invalid_negative_input = "-5\n";
     assert_eq!(validate_user_input(invalid_negative_input), invalid_input_response);
-    let invalid_input_response = "hello\n";
+    let invalid_input_input = "hello\n";
     assert_eq!(validate_user_input(invalid_negative_input), invalid_input_response);
 }
 
