@@ -26,17 +26,14 @@ fn main() {
 
 
 fn calculate_nth_fibonacci_number(n: i64) -> i64 {
-    if n < 1 {
-        -1
+    if n > 2 {
+        calculate_nth_fibonacci_number(n-1) + calculate_nth_fibonacci_number(n-2)
     }
-    else if n == 1 {
-        1
-    }
-    else if n == 2 {
+    else if n == 2 || n == 1 {
         1
     }
     else {
-        calculate_nth_fibonacci_number(n - 1) + calculate_nth_fibonacci_number(n-2)
+        -1
     }
 }
 
