@@ -34,7 +34,7 @@ fn calculate_nth_fibonacci_number(n: i64) -> i64 {
 }
 
 fn validate_user_input(input_string: &str) -> i64 {
-    let return_val = match input_string.trim().parse::<i64>() {
+    let mut return_val = match input_string.trim().parse::<i64>() {
         Ok(num) => num,
         Err(_) => -1,
     };
@@ -74,7 +74,7 @@ fn test_validate_user_input(){
     let invalid_negative_input = "-5\n";
     assert_eq!(validate_user_input(invalid_negative_input), invalid_input_response);
     let invalid_input_input = "hello\n";
-    assert_eq!(validate_user_input(invalid_negative_input), invalid_input_response);
+    assert_eq!(validate_user_input(invalid_input_input), invalid_input_response);
 }
 
 
