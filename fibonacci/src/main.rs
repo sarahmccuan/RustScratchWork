@@ -2,19 +2,26 @@
 use std::io;
 
 fn main() {
-    println!("hello, world");
-    // Get "n" from user and validate until legit n given
     loop {
         println!("Enter a number \"n\" greater than 0");
         let mut user_input = String::new();
         io::stdin().read_line(&mut user_input)
             .expect("Failed to read line");
-       
-    }
 
-    // println!("value entered is {}", n);
-    // calculate nth fibonacci number (break this out as func w/ test)
-    // print to user and end program
+        let user_input = user_input.as_str();
+
+        let validation_response = validate_user_input(user_input);
+        if validation_response == -1 {
+            println!("Not a valid input, try again.");
+            continue;
+        }
+        else {
+            println!("The {}th number in the fibonacci sequence is {}.", validation_response, 
+                     calculate_nth_fibonacci_number(validation_response));
+            println!("Thanks for playing!");
+            break;
+        }
+    }
 }
 
 
@@ -38,6 +45,10 @@ fn validate_user_input(input_string: &str) -> i64 {
         Ok(num) => num,
         Err(_) => -1,
     };
+    
+    if return_val < 1 { // parses okay but not valid input for fibonacci gen
+        return_val = -1;
+    }
     return_val
 }
 
