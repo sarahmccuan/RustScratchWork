@@ -48,5 +48,19 @@ fn main() {
     // following line breaks b/c of borrow to create another_string
     // println!("string is still {}", string);
 
+    let s = String::new(); // this can't take parameters
+	let str_1 = String::from("hello ");
+	let str_2 = String::from("world!");
+	// below does not work b/c needs to take ownership of str_1
+	// let str_3 = &str_1 + &str_2;
+	// println!("str_3 is {}", str_3);
+
+
+
+
+
+
+
+
 
 }
